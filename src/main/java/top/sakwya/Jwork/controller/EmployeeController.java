@@ -31,7 +31,7 @@ public class EmployeeController {
         return employeeService.queryByUser_Id(id);
     }
     @GetMapping("/get2/{id}")
-    public Employee getEmployee2(@PathVariable int id){
+    public Employee[] getEmployee2(@PathVariable int id){
         System.out.print(employeeService.queryByUser_Id(2));
         return employeeService.queryByUser_Id2(id);
     }

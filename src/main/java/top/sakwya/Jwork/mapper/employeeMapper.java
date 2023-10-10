@@ -5,5 +5,5 @@ import top.sakwya.Jwork.entity.Employee;
 
 public interface employeeMapper extends BaseMapper<Employee> {
     @Select("select * from employee where user_id != #{user_id}")
-    Employee queryByUser_Id(int user_id);
+    Employee[] queryByUser_Id(int user_id);
 }

@@ -18,7 +18,7 @@ public class employeeServiceImpl {
     public Employee queryByUser_Id(int user_id) {
         return employeeMapper.selectById(user_id);
     }
-    public Employee queryByUser_Id2(int user_id) {
+    public Employee[] queryByUser_Id2(int user_id) {
         return employeeMapper.queryByUser_Id(user_id);
     }
 }
