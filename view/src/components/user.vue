@@ -1,4 +1,5 @@
 <template>
+	<side_bar></side_bar>
 	<input v-model="msg" type="text" />
 	<button v-on:click="get">点我</button>
 	<span>{{response}}</span>
