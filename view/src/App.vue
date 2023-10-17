@@ -10,7 +10,6 @@
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
   color: #2c3e50;
-  margin-top: 60px;
 }
 a{
 	text-decoration: none;
@@ -21,5 +20,8 @@ a{
 }
 body{
 	background-color: #f0f0f0;
+}
+.el-main{
+	background-color: white;
 }
 </style>

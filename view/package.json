@@ -7,7 +7,9 @@
     "serve": "vite preview"
   },
   "dependencies": {
+    "@element-plus/icons-vue": "^2.1.0",
     "axios": "^0.21.4",
+    "element-plus": "^2.4.0",
     "vue": "^3.2.8",
     "vue-router": "^4.2.5"
   },

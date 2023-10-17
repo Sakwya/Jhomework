@@ -1,8 +1,19 @@
 <template>
-	<side_bar></side_bar>
-	<input v-model="msg" type="text" />
-	<button v-on:click="get">点我</button>
-	<span>{{response}}</span>
+	<el-container>
+		<el-header :style="{padding:0}">
+			<head-bar></head-bar>
+		</el-header>
+		<el-container>
+			<el-aside>
+			<side-bar></side-bar>
+			</el-aside>
+			<el-main>
+				<input v-model="msg" type="text" />
+				<button v-on:click="get">点我</button>
+				<span>{{response}}</span>
+			</el-main>
+		</el-container>
+	</el-container>
 </template>
 
 <script>
