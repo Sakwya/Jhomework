@@ -2,15 +2,15 @@
 	<div :style="frame">
 		<div :style="line"></div>
 		<div :style="entry">
-			<span  v-on:click="opener">权限管理</span>
+			<span v-on:click="opener"><i></i>权限管理</span>
 			<ul :style="list">
-				<li :style="link">
+				<li :style="link" class="qhduioqwhiu">
 					<a>用户维护</a>
 				</li>
-				<li :style="link">
+				<li :style="link" class="qhduioqwhiu">
 					角色维护
 				</li>
-				<li :style="link">
+				<li :style="link" class="qhduioqwhiu">
 					权限维护
 				</li>
 			</ul>
@@ -27,22 +27,22 @@
 			return {
 				frame: {
 					width: '300px',
-					display: 'inline-block',
 					border: '1px solid #dddddd',
 					backgroundColor: '#ffffff',
 					borderRadius: '10px',
 					padding: '20px',
 				},
-				entry:{
-					padding:'10px',
-					
-					
+				entry: {
+					textAlign: 'left',
+					width: '100%',
+					display: 'inline-block',
+
 				},
 				list: {
-					paddingLeft:'30px',
 					listStyle: 'none',
 				},
 				link: {
+					paddingLeft: '30px',
 
 				},
 				line: {
@@ -56,4 +56,11 @@
 </script>
 
 <style>
+	* {}
+	.qhduioqwhiu{
+		transition: background-color 0.2s ease-in-out;
+	}
+	.qhduioqwhiu:hover {
+		background-color: #dddddd;
+	}
 </style>

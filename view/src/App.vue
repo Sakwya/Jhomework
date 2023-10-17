@@ -12,6 +12,13 @@
   color: #2c3e50;
   margin-top: 60px;
 }
+a{
+	text-decoration: none;
+}
+*{
+	margin: 0;
+	padding: 0;
+}
 body{
 	background-color: #f0f0f0;
 }
