@@ -13,7 +13,7 @@ import top.sakwya.Jwork.service.impl.employeeServiceImpl;
 import java.util.List;
 
 @RestController
-@RequestMapping("/employee")
+@RequestMapping("/api/employee")
 public class EmployeeController {
     @Resource
     private employeeServiceImpl employeeService;
