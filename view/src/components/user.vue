@@ -4,10 +4,11 @@
 			<head-bar></head-bar>
 		</el-header>
 		<el-container>
-			<el-aside>
+			<el-aside :style="{padding:'20px'}">
 			<side-bar></side-bar>
 			</el-aside>
 			<el-main>
+				<query-list></query-list>
 				<input v-model="msg" type="text" />
 				<button v-on:click="get">点我</button>
 				<span>{{response}}</span>
