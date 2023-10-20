@@ -18,8 +18,8 @@ public class EmployeeController {
     private employeeServiceImpl employeeService;
 
     @GetMapping("/show")
-    public List<Employee> show() {
-        return employeeService.queryAll();
+    public JsonResult<List<Employee>> show() {
+        return new JsonResult<>(employeeService.queryAll());
     }
 
     @GetMapping("/get/{id}")

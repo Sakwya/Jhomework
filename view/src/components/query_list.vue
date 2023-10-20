@@ -148,7 +148,7 @@
 						})
 			},
 			set_tableData() {
-				var rawData = this.response
+				var rawData = this.response.data
 				var tableData = []
 				if (rawData.length == undefined) {
 					//object
