@@ -12,12 +12,12 @@
 						<Operation />
 					</el-icon><span>权限管理</span>
 				</template>
-				<el-menu-item index="2-1"><el-icon>
+				<el-menu-item index="2-1"><router-link to="/user"><el-icon>
 						<UserFilled />
-					</el-icon><span>用户维护</span></el-menu-item>
-				<el-menu-item index="2-2"><el-icon>
+					</el-icon><span>用户维护</span></router-link></el-menu-item>
+				<el-menu-item index="2-2"><router-link to="/role"><el-icon>
 						<Avatar />
-					</el-icon><span>角色维护</span></el-menu-item>
+					</el-icon><span>角色维护</span></router-link></el-menu-item>
 				<el-menu-item index="2-3"><el-icon>
 						<Briefcase />
 					</el-icon><span>菜单维护</span></el-menu-item>
@@ -75,4 +75,7 @@
 </script>
 
 <style>
+	a{
+		color:val(var(--el-menu-active-color))
+	}
 </style>

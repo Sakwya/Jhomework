@@ -5,6 +5,7 @@ import org.springframework.stereotype.Service;
 import top.sakwya.Jwork.entity.Employee;
 import top.sakwya.Jwork.mapper.employeeMapper;
 
+import java.sql.SQLException;
 import java.util.List;
 
 @Service
@@ -20,5 +21,8 @@ public class employeeServiceImpl {
     }
     public Employee[] queryByUser_Id2(int user_id) {
         return employeeMapper.queryByUser_Id(user_id);
+    }
+    public int insertEmployee(Employee employee) throws SQLException {
+        return employeeMapper.insert(employee);
     }
 }

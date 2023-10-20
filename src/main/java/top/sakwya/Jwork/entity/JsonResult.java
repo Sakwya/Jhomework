@@ -6,9 +6,9 @@ package top.sakwya.Jwork.entity;
  * @param <T>
  * @author Sakwya
  */
-public class JsonResult<T> {
+public class JsonResult<T>{
     private T data;
-    private String msg;
+    private final String msg;
 
     public JsonResult() {
         this.msg = "操作成功！";

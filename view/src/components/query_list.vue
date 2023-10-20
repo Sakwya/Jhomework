@@ -20,7 +20,7 @@
 					<Search />
 				</el-icon>
 				查询</el-button>
-			<div style="flex-grow: 1;" /><el-button type="primary" @click=""><el-icon>
+			<div style="flex-grow: 1;" /><el-button type="primary" @click="dialogVisable=true"><el-icon>
 					<Plus />
 				</el-icon>
 				新增</el-button>
@@ -31,60 +31,87 @@
 		</div>
 		<el-divider />
 		<el-table :data="tableData" border stripe>
-			<el-table-column prop="user_id" label="#" width="40" />
-			<el-table-column type="selection" width="40" />
-			<el-table-column prop="account" label="账号" />
-			<el-table-column prop="user_name" label="名称" />
-			<el-table-column prop="email" label="邮箱地址" />
+			<el-table-column v-for="(c,index) in attrs" :key="index" :type="c.type" :prop="c.prop" :label="c.label"
+				:width="c.width"></el-table-column>
 			<!-- <el-table-column label="操作" /> -->
 		</el-table>
 	</el-card>
+	<el-dialog title="新增数据" v-model="dialogVisable" width="600px" :style="{borderRadius:'10px'}">
+		<el-form :model="formData" label-width="auto" label-suffix=":">
+			<el-form-item v-for="(f,index) in attrs_" :key="index" :prop="f.prop" :label="f.label">
+				<el-input v-model="formData[f.prop]"></el-input>
+			</el-form-item>
+		</el-form>
+		<template #footer>
+			<span>
+				<el-button @click="dialogVisable = false">取消</el-button>
+				<el-button type="primary" @click="insert();dialogVisable = false">
+					提交
+				</el-button>
+			</span>
+		</template>
+	</el-dialog>
 </template>
 
 <script>
-	// interface Employee{
-	// 	user_id:String
-	// 	account:String
-	// 	user_name:String
-	// 	email:String
-	// }
-	import {
-		ref
-	} from 'vue'
+import { ElMessage } from 'element-plus'
 	export default {
+		name: "query_list",
+		props: ['attrs', 'attrs_', 'api'],
 		data() {
 			return {
-				query: '/employee/get/1',
+				formData: {},
+				dialogVisable: false,
+				query: '/show',
 				response: '',
 				tableData: '',
 			}
 		},
 		methods: {
 			get() {
-				window.$ = this
 				var _this = this
-				console.log(_this)
-				console.log('do...')
-				var request = '/employee/get/1'
-				if (this.query != '') {
-					request = this.query
-				}
+				var request = this.api + this.query
 				this.$axios
 					.get(request, {})
 					.then(successResponse => {
 						if (successResponse.status === 200) {
-							console.log('success')
 							_this.response = successResponse.data
 							console.log(_this.response)
 							this.set_tableData()
+							ElMessage({
+								showClose:true,
+								message:'刷新数据',
+								type:'success',
+							})
 						}
 					})
 					.catch(failResponse => {
 
 					})
 			},
+			insert() {
+				var request = this.api + '/insert'
+				console.log(request)
+				console.log(this.formData)
+				this.$axios
+				.post(request,this.formData)
+				.then(successResponse => {
+						if (successResponse.status === 200) {
+							ElMessage({
+								showClose:true,
+								message:'新增数据成功',
+								type:'success',
+							})
+							this.get()
+							console.log(successResponse)
+							console.log(successResponse.data)
+						}
+					})
+					.catch(failResponse => {
+						
+					})
+			},
 			set_tableData() {
-				console.log(this.response)
 				var rawData = this.response
 				var tableData = []
 				if (rawData.length == undefined) {
@@ -108,7 +135,11 @@
 				}
 				this.tableData = tableData
 			}
-		}
+		},
+		mounted() {
+			window.$ = this
+			this.get()
+		},
 	}
 </script>
 
