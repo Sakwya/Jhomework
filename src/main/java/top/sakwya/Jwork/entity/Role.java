@@ -1,5 +1,6 @@
 package top.sakwya.Jwork.entity;
 
+import com.baomidou.mybatisplus.annotation.IdType;
 import com.baomidou.mybatisplus.annotation.TableId;
 import com.baomidou.mybatisplus.annotation.TableName;
 import lombok.Builder;
@@ -10,8 +11,8 @@ import java.io.Serializable;
 @Data
 @Builder
 @TableName("role")
-public class role implements Serializable {
-    @TableId(value = "role_id")
+public class Role implements Serializable {
+    @TableId(value = "role_id",type = IdType.AUTO)
     private Integer role_id;
     private String role_name;
 }

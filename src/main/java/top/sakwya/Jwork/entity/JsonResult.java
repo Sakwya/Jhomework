@@ -8,7 +8,7 @@ package top.sakwya.Jwork.entity;
  */
 public class JsonResult<T>{
     private T data;
-    private final String msg;
+    private String msg;
 
     public JsonResult() {
         this.msg = "操作成功！";
@@ -34,5 +34,13 @@ public class JsonResult<T>{
 
     public void setData(T data) {
         this.data = data;
+    }
+
+    public void setMsg(String msg) {
+        this.msg = msg;
+    }
+
+    public String getMsg() {
+        return msg;
     }
 }

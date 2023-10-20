@@ -39,8 +39,8 @@ CREATE TABLE `ability`  (
 DROP TABLE IF EXISTS `employee`;
 CREATE TABLE `employee`  (
   `user_id` int NOT NULL AUTO_INCREMENT,
-  `account` varchar(20) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
-  `user_name` varchar(20) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
+  `account` varchar(20) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
+  `user_name` varchar(20) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
   `password` char(40) CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL,
   `email` varchar(40) CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL,
   PRIMARY KEY (`user_id`) USING BTREE,
@@ -51,11 +51,36 @@ CREATE TABLE `employee`  (
 -- ----------------------------
 -- Records of employee
 -- ----------------------------
-INSERT INTO `employee` VALUES (1, '231231', '51541', '31431413241421412', 'dqq@qqdqf.fwe');
-INSERT INTO `employee` VALUES (2, 'dcq', '2312214214214', '40bd001563085fc35165329ea1ff5c5ecbdbbeef', 'adsa');
-INSERT INTO `employee` VALUES (3, 'wyj', '王予嘉', 'v', '1');
-INSERT INTO `employee` VALUES (4, 'wwj', '王唯佳', '1903821903', '13218');
-INSERT INTO `employee` VALUES (5, '123', '141', '1312', '541');
+INSERT INTO `employee` VALUES (1,'KEYLUN','张吉惟',SHA('000001'),'il6iag77bfd5m@foxmail.com');
+INSERT INTO `employee` VALUES (2,'magi34','林国瑞',SHA('000002'),'zif6d6et@qq.com');
+INSERT INTO `employee` VALUES (3,'114514beastman','林玫书',SHA('000003'),'riss7@163.com');
+INSERT INTO `employee` VALUES (4,'Keard','林雅南',SHA('000004'),'gyqwfofu09@126.com');
+INSERT INTO `employee` VALUES (5,'danticat420','江奕云',SHA('000005'),'atz4rl@outlook.com');
+INSERT INTO `employee` VALUES (6,'amoskandy','刘柏宏',SHA('000006'),'daln2hq3shi@hotmail.com');
+INSERT INTO `employee` VALUES (7,'chenge150','阮建安',SHA('000007'),'by7a388e30@foxmail.com');
+INSERT INTO `employee` VALUES (8,'北极熊教官','林子帆',SHA('000008'),'vneew8erx@qq.com');
+INSERT INTO `employee` VALUES (9,'Fate','夏志豪',SHA('000009'),'n2ovhiya4e62u@163.com');
+INSERT INTO `employee` VALUES (10,'Prototype','吉茹定',SHA('000010'),'t1wf4@126.com');
+INSERT INTO `employee` VALUES (11,'sogeth','李中冰',SHA('000011'),'9jldo4cqp2xa2@outlook.com');
+INSERT INTO `employee` VALUES (12,'akaicoat123','黄文隆',SHA('000012'),'uja25nz@hotmail.com');
+INSERT INTO `employee` VALUES (13,'Kchaos','谢彦文',SHA('000013'),'nxg9k2m3qxa@foxmail.com');
+INSERT INTO `employee` VALUES (14,'RepStormy','傅智翔',SHA('000014'),'u02ucwdwg@qq.com');
+INSERT INTO `employee` VALUES (15,'mare_mio','洪振霞',SHA('000015'),'nqcbcjj0@163.com');
+INSERT INTO `employee` VALUES (16,'carradio2014','刘姿婷',SHA('000016'),'l77oy9f57@126.com');
+INSERT INTO `employee` VALUES (17,'deepdarkpzj','荣姿康',SHA('000017'),'g5d0zd1@outlook.com');
+INSERT INTO `employee` VALUES (18,'Pokom','昌致盈',SHA('000018'),'7rkatd@hotmail.com');
+INSERT INTO `employee` VALUES (19,'白衣使者','方一强',SHA('000019'),'jvhynmgycmcca@foxmail.com');
+INSERT INTO `employee` VALUES (20,'yyyun','黎芸贵',SHA('000020'),'ss53zdyq0x9v@qq.com');
+INSERT INTO `employee` VALUES (21,'tmta','郑伊雯',SHA('000021'),'6zriyui@163.com');
+INSERT INTO `employee` VALUES (22,'ks33saber','雷进宝',SHA('000022'),'hzups32m8k@126.com');
+INSERT INTO `employee` VALUES (23,'Diana2046','吴美隆',SHA('000023'),'nubsi8h@outlook.com');
+INSERT INTO `employee` VALUES (24,'Teacher152','吴心真',SHA('000024'),'16waq@hotmail.com');
+INSERT INTO `employee` VALUES (25,'anidownloader123','王美珠',SHA('000025'),'lwrfrx54@foxmail.com');
+INSERT INTO `employee` VALUES (26,'b217285','郭芳天',SHA('000026'),'pemtsap9vdxiwl@qq.com');
+INSERT INTO `employee` VALUES (27,'yingtingyishu','李雅惠',SHA('000027'),'vswcj@163.com');
+INSERT INTO `employee` VALUES (28,'MotherEmperor','陈文婷',SHA('000028'),'j4x8cnfa1d@126.com');
+INSERT INTO `employee` VALUES (29,'Lewd-Lewd','曹敏',SHA('000029'),'2obfotuah60@outlook.com');
+INSERT INTO `employee` VALUES (30,'Fruit','王依婷',SHA('000030'),'sec3aeir6p5hf@hotmail.com');
 
 -- ----------------------------
 -- Table structure for employee_role

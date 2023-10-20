@@ -16,21 +16,22 @@
 					<template #prepend>查询条件</template>
 				</el-input>
 			</div>
-			<el-button type="warning" @click="get" style="margin-left: 12px;"><el-icon>
+			<el-button type="warning" @click="get()" style="margin-left: 12px;"><el-icon>
 					<Search />
 				</el-icon>
 				查询</el-button>
-			<div style="flex-grow: 1;" /><el-button type="primary" @click="dialogVisable=true"><el-icon>
+			<div style="flex-grow: 1;" />
+			<el-button type="primary" @click="dialogVisable=true"><el-icon>
 					<Plus />
 				</el-icon>
 				新增</el-button>
-			<el-button type="danger" @click=""><el-icon>
+			<el-button type="danger" @click="deleteRows()"><el-icon>
 					<Close />
 				</el-icon>
 				删除</el-button>
 		</div>
 		<el-divider />
-		<el-table :data="tableData" border stripe>
+		<el-table :data="tableData" border stripe ref="table">
 			<el-table-column v-for="(c,index) in attrs" :key="index" :type="c.type" :prop="c.prop" :label="c.label"
 				:width="c.width"></el-table-column>
 			<!-- <el-table-column label="操作" /> -->
@@ -54,7 +55,9 @@
 </template>
 
 <script>
-import { ElMessage } from 'element-plus'
+	import {
+		ElMessage
+	} from 'element-plus'
 	export default {
 		name: "query_list",
 		props: ['attrs', 'attrs_', 'api'],
@@ -62,7 +65,7 @@ import { ElMessage } from 'element-plus'
 			return {
 				formData: {},
 				dialogVisable: false,
-				query: '/show',
+				query: 'show',
 				response: '',
 				tableData: '',
 			}
@@ -76,31 +79,31 @@ import { ElMessage } from 'element-plus'
 					.then(successResponse => {
 						if (successResponse.status === 200) {
 							_this.response = successResponse.data
-							console.log(_this.response)
 							this.set_tableData()
 							ElMessage({
-								showClose:true,
-								message:'刷新数据',
-								type:'success',
+								showClose: true,
+								message: '刷新数据',
+								type: 'success',
 							})
+							console.log(successResponse)
+							console.log(successResponse.data)
 						}
 					})
 					.catch(failResponse => {
-
+						console.log(failResponse)
 					})
 			},
 			insert() {
-				var request = this.api + '/insert'
-				console.log(request)
+				var request = this.api + 'insert'
 				console.log(this.formData)
 				this.$axios
-				.post(request,this.formData)
-				.then(successResponse => {
+					.post(request, this.formData)
+					.then(successResponse => {
 						if (successResponse.status === 200) {
 							ElMessage({
-								showClose:true,
-								message:'新增数据成功',
-								type:'success',
+								showClose: true,
+								message: '新增数据成功',
+								type: 'success',
 							})
 							this.get()
 							console.log(successResponse)
@@ -108,8 +111,41 @@ import { ElMessage } from 'element-plus'
 						}
 					})
 					.catch(failResponse => {
-						
+						ElMessage({
+							showClose: true,
+							message: '获取数据失败',
+							type: 'error',
+						})
 					})
+			},deleteRows(){
+				var selectData = this.$refs.table.getSelectionRows()
+				for(let i=0;i<selectData.length;i++){
+					this.deleteRow(selectData[i])
+				}
+			},deleteRow(row){
+					var request = this.api + 'delete'
+					this.$axios
+						.post(request, row)
+						.then(successResponse => {
+							if (successResponse.status === 200) {
+								ElMessage({
+									showClose: true,
+									message: '数据已删除',
+									type: 'success',
+								})
+								console.log(successResponse)
+								console.log(successResponse.data)
+							}
+						})
+						.catch(failResponse => {
+							ElMessage({
+								showClose: true,
+								message: '操作失败',
+								type: 'error',
+							})
+								console.log(successResponse)
+								console.log(successResponse.data)
+						})
 			},
 			set_tableData() {
 				var rawData = this.response

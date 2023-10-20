@@ -23,24 +23,26 @@ public class EmployeeController {
     }
 
     @GetMapping("/get/{id}")
-    public Employee getEmployee(@PathVariable int id) {
-        System.out.print(employeeService.queryByUser_Id(1));
-        return employeeService.queryByUser_Id(id);
-    }
-
-    @GetMapping("/get2/{id}")
-    public Employee[] getEmployee2(@PathVariable int id) {
-        System.out.print(employeeService.queryByUser_Id(2));
-        return employeeService.queryByUser_Id2(id);
+    public JsonResult<Employee> getEmployee(@PathVariable int id) {
+        System.out.println(id);
+        return new JsonResult<>(employeeService.queryByUser_Id(id));
     }
 
     @PostMapping("/insert")
     public JsonResult<Integer> insertEmployee(@RequestBody Employee employee) {
         try {
-            employeeService.insertEmployee(employee);
+            return new JsonResult<>(employeeService.insertEmployee(employee));
         } catch (SQLException e) {
-            return new JsonResult<Integer>(e.getErrorCode(), e.getSQLState());
+            return new JsonResult<>(e.getErrorCode(), e.getSQLState());
         }
-        return new JsonResult<Integer>(0);
+    }
+
+    @PostMapping("/delete")
+    public JsonResult<Integer> deleteEmployee(@RequestBody Employee employee) {
+        try {
+            return new JsonResult<>(employeeService.deleteEmployee(employee.user_id));
+        } catch (SQLException e) {
+            return new JsonResult<>(e.getErrorCode(), e.getSQLState());
+        }
     }
 }

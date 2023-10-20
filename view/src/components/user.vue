@@ -18,7 +18,7 @@
 	export default {
 		data() {
 			return {
-				api: "/employee",
+				api: "/employee/",
 				attrs: [{
 						prop: "user_id",
 						label: "#",

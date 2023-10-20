@@ -1,7 +1,7 @@
 package top.sakwya.Jwork.mapper;
 
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
-import top.sakwya.Jwork.entity.role;
+import top.sakwya.Jwork.entity.Role;
 
-public interface roleMapper extends BaseMapper<role> {
+public interface roleMapper extends BaseMapper<Role> {
 }

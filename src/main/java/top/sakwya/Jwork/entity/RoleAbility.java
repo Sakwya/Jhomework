@@ -9,7 +9,7 @@ import java.io.Serializable;
 @Data
 @Builder
 @TableName("role_ability")
-public class roleAbility implements Serializable {
+public class RoleAbility implements Serializable {
     private Integer role_id;
     private Integer ability_id;
 }
