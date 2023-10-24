@@ -8,12 +8,15 @@ import lombok.Data;
 
 import java.io.Serializable;
 
-
 @Data
 @Builder
-@TableName("ability")
-public class Ability implements Serializable {
-    @TableId(value = "ability_id",type = IdType.AUTO)
-    private Integer ability_id;
-    private String ability_name;
+@TableName("user")
+public class User implements Serializable {
+
+    @TableId(value = "id",type = IdType.AUTO)
+    public int id;
+    private String account;
+    public String username;
+    private String password;
+    private String email;
 }

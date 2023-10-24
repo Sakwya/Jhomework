@@ -8,8 +8,8 @@ import java.io.Serializable;
 
 @Data
 @Builder
-@TableName("employee_role")
-public class EmployeeRole implements Serializable {
-    private Integer employee_id;
-    private Integer role_id;
+@TableName("user_role")
+public class UserRole implements Serializable {
+    private Integer uid;
+    private Integer rid;
 }

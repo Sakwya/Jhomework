@@ -12,7 +12,7 @@ import java.io.Serializable;
 @Builder
 @TableName("role")
 public class Role implements Serializable {
-    @TableId(value = "role_id",type = IdType.AUTO)
-    private Integer role_id;
-    private String role_name;
+    @TableId(value = "id",type = IdType.AUTO)
+    private Integer id;
+    private String name;
 }

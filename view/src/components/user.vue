@@ -18,9 +18,9 @@
 	export default {
 		data() {
 			return {
-				api: "/employee/",
+				api: "/user/",
 				attrs: [{
-						prop: "user_id",
+						prop: "id",
 						label: "#",
 						width: "auto",
 					}, {
@@ -31,7 +31,7 @@
 						prop: "account",
 						label: "账号",
 					}, {
-						prop: "user_name",
+						prop: "username",
 						label: "名称",
 					}, {
 						prop: "email",
@@ -43,7 +43,7 @@
 						label: "账号",
 						data:"",
 					}, {
-						prop: "user_name",
+						prop: "userName",
 						label: "名称",
 						data:"",
 					},

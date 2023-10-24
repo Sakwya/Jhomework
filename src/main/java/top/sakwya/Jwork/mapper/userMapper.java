@@ -1,0 +1,11 @@
+package top.sakwya.Jwork.mapper;
+
+import com.baomidou.mybatisplus.core.mapper.BaseMapper;
+import org.apache.ibatis.annotations.Select;
+import top.sakwya.Jwork.entity.User;
+
+public interface userMapper extends BaseMapper<User> {
+
+    @Select("select * from employee where id = #{id}")
+    User getEmployeeByUserId(int id);
+}
