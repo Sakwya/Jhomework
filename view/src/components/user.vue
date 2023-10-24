@@ -22,10 +22,10 @@
 				attrs: [{
 						prop: "id",
 						label: "#",
-						width: "auto",
+						width: "60",
 					}, {
 						type: "selection",
-						width: "auto",
+						width: "40",
 					},
 					{
 						prop: "account",
@@ -43,7 +43,7 @@
 						label: "账号",
 						data:"",
 					}, {
-						prop: "userName",
+						prop: "username",
 						label: "名称",
 						data:"",
 					},

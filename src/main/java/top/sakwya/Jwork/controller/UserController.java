@@ -11,7 +11,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/api/user")
-public class EmployeeController {
+public class UserController {
     @Resource
     private userServiceImpl userService;
 
@@ -23,13 +23,11 @@ public class EmployeeController {
 
     @GetMapping("/get/{id}")
     public JsonResult<User> getUser(@PathVariable int id) {
-        System.out.println(id);
         return new JsonResult<>(userService.queryByUser_Id(id));
     }
 
     @GetMapping("/get2/{id}")
     public JsonResult<User> getUser2(@PathVariable int id) {
-        System.out.println(id);
         return new JsonResult<>(userService.selectById(id));
     }
 

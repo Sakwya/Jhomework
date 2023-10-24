@@ -85,12 +85,14 @@
 								message: '刷新数据',
 								type: 'success',
 							})
-							console.log(successResponse)
-							console.log(successResponse.data)
 						}
 					})
 					.catch(failResponse => {
-						console.log(failResponse)
+						ElMessage({
+							showClose: true,
+							message: failResponse,
+							type: 'error',
+						})
 					})
 			},
 			insert() {
@@ -106,14 +108,12 @@
 								type: 'success',
 							})
 							this.get()
-							console.log(successResponse)
-							console.log(successResponse.data)
 						}
 					})
 					.catch(failResponse => {
 						ElMessage({
 							showClose: true,
-							message: '获取数据失败',
+							message: failResponse,
 							type: 'error',
 						})
 					})
@@ -142,33 +142,42 @@
 					.catch(failResponse => {
 						ElMessage({
 							showClose: true,
-							message: '操作失败',
+							message: failResponse,
 							type: 'error',
 						})
-						console.log(successResponse)
-						console.log(successResponse.data)
 					})
 			},
 			set_tableData() {
 				var rawData = this.response.data
 				var tableData = []
+				var attrs = this.attrs
+				var props = []
+				var attrs_one = {}
+				var attrs_list = []
+				for (let i = 0; i < attrs.length; i++) {
+					if (attrs[i].type == undefined) {
+						let attr = attrs[i].prop
+						props.push(attr);
+						attrs_one[attr] = rawData[attr];
+					}
+				}
+
 				if (rawData.length == undefined) {
+					for (let i = 0; i < props.length; i++) {
+						let attr = props[i];
+						attrs_one[attr] = rawData[attr];
+					}
 					//object
-					tableData.push({
-						user_id: rawData.user_id,
-						account: rawData.account,
-						user_name: rawData.user_name,
-						email: rawData.email,
-					})
+					tableData.push(attrs_one)
 				} else {
 					//array
 					for (let i = 0; i < rawData.length; i++) {
-						tableData.push({
-							user_id: rawData[i].user_id,
-							account: rawData[i].account,
-							user_name: rawData[i].user_name,
-							email: rawData[i].email,
-						})
+						for (let j = 0; j < props.length; j++) {
+							let attr = props[j];
+							attrs_list.push({})
+							attrs_list[i][attr] = rawData[i][attr];
+						}
+						tableData.push(attrs_list[i])
 					}
 				}
 				this.tableData = tableData

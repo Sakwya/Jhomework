@@ -6,6 +6,6 @@ import top.sakwya.Jwork.entity.User;
 
 public interface userMapper extends BaseMapper<User> {
 
-    @Select("select * from employee where id = #{id}")
+    @Select("select * from user where id = #{id}")
     User getEmployeeByUserId(int id);
 }

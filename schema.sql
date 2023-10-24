@@ -11,7 +11,7 @@
  Target Server Version : 100425
  File Encoding         : 65001
 
- Date: 24/10/2023 10:19:15
+ Date: 24/10/2023 10:52:44
 */
 
 SET NAMES utf8mb4;
@@ -89,10 +89,10 @@ CREATE TABLE `spring_session_attributes`  (
 DROP TABLE IF EXISTS `user`;
 CREATE TABLE `user`  (
   `id` int NOT NULL AUTO_INCREMENT,
-  `account` varchar(20) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
-  `user_name` varchar(20) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
+  `account` varchar(64) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
+  `username` varchar(64) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
   `password` char(40) CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL,
-  `email` varchar(40) CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL,
+  `email` varchar(64) CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL,
   PRIMARY KEY (`id`) USING BTREE,
   UNIQUE INDEX `user_id`(`id`) USING BTREE,
   INDEX `password`(`password`) USING BTREE
