@@ -12,7 +12,7 @@
 		</template>
 		<div :style="{display:'flex',justifyContent:'space-between'}">
 			<div>
-				<el-input v-model="query">
+				<el-input v-model="query" @keypress.enter="get()">
 					<template #prepend>查询条件</template>
 				</el-input>
 			</div>
@@ -117,35 +117,37 @@
 							type: 'error',
 						})
 					})
-			},deleteRows(){
+			},
+			deleteRows() {
 				var selectData = this.$refs.table.getSelectionRows()
-				for(let i=0;i<selectData.length;i++){
+				for (let i = 0; i < selectData.length; i++) {
 					this.deleteRow(selectData[i])
 				}
-			},deleteRow(row){
-					var request = this.api + 'delete'
-					this.$axios
-						.post(request, row)
-						.then(successResponse => {
-							if (successResponse.status === 200) {
-								ElMessage({
-									showClose: true,
-									message: '数据已删除',
-									type: 'success',
-								})
-								console.log(successResponse)
-								console.log(successResponse.data)
-							}
-						})
-						.catch(failResponse => {
+			},
+			deleteRow(row) {
+				var request = this.api + 'delete'
+				this.$axios
+					.post(request, row)
+					.then(successResponse => {
+						if (successResponse.status === 200) {
 							ElMessage({
 								showClose: true,
-								message: '操作失败',
-								type: 'error',
+								message: '数据已删除',
+								type: 'success',
 							})
-								console.log(successResponse)
-								console.log(successResponse.data)
+							console.log(successResponse)
+							console.log(successResponse.data)
+						}
+					})
+					.catch(failResponse => {
+						ElMessage({
+							showClose: true,
+							message: '操作失败',
+							type: 'error',
 						})
+						console.log(successResponse)
+						console.log(successResponse.data)
+					})
 			},
 			set_tableData() {
 				var rawData = this.response.data
