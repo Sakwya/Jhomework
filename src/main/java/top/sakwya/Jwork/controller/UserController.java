@@ -4,16 +4,15 @@ import jakarta.annotation.Resource;
 import org.springframework.web.bind.annotation.*;
 import top.sakwya.Jwork.entity.User;
 import top.sakwya.Jwork.entity.JsonResult;
-import top.sakwya.Jwork.service.impl.userServiceImpl;
+import top.sakwya.Jwork.service.userService;
 
 import java.sql.SQLException;
 import java.util.List;
-
 @RestController
 @RequestMapping("/api/user")
 public class UserController {
     @Resource
-    private userServiceImpl userService;
+    private userService userService;
 
     @GetMapping("/show")
     public JsonResult<List<User>> show() {
