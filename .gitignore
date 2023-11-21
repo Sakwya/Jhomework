@@ -34,3 +34,4 @@ build/
 
 ### node_modules ###
 view/node_modules/*
+/view/node_modules/
