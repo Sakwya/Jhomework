@@ -8,4 +8,7 @@ public interface userMapper extends BaseMapper<User> {
 
     @Select("select * from user where id = #{id}")
     User getEmployeeByUserId(int id);
+
+    @Select("select * from user where username = #{username}")
+    User findByUsername(String username);
 }

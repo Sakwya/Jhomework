@@ -16,7 +16,10 @@ public class User implements Serializable {
     @TableId(value = "id",type = IdType.AUTO)
     public int id;
     private String account;
-    public String username;
+    private String username;
     private String password;
     private String email;
+
+    private String salt;
+
 }

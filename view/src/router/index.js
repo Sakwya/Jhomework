@@ -2,22 +2,23 @@ import {
 	createRouter,
 	createWebHistory
 } from 'vue-router'
-import Index from '../components/index.vue'
-import User from '../components/user.vue'
-import Role from '../components/role.vue'
 
 const routes = [{
 	path: '/',
 	name: 'index',
-	component: Index,
+	component: ()=>import('../components/index.vue'),
 }, {
 	path: '/user',
 	name: 'user',
-	component: User,
+	component: ()=>import('../components/user.vue'),
 },{
 	path: '/role',
 	name:'role',
-	component: Role,
+	component:  ()=>import('../components/role.vue'),
+},{
+	path:'/login',
+	name:'login',
+	component:()=>import('../components/login.vue')
 }]
 
 const router = createRouter(({
