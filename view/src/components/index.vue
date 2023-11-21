@@ -8,7 +8,8 @@
 				<side-bar></side-bar>
 			</el-aside>
 			<el-main>
-				<query-list></query-list>
+
+				<v-md-preview :text="markdownContent"></v-md-preview>
 			</el-main>
 		</el-container>
 	</el-container>
@@ -16,12 +17,23 @@
 
 <script>
 	export default {
+		components: {},
 		data() {
 			return {
+				markdownContent: ''
 			}
 		},
-		methods: {
-		}
+		mounted() {
+			// 用axios加载本地Markdown文件
+			this.$axios.get('http://localhost:8080/static/README.md')
+				.then(response => {
+					// 将文件内容保存到数据属性中
+					this.markdownContent = response.data;
+				})
+				.catch(error => {
+					console.error('Error loading Markdown file:', error);
+				});
+		},
 	}
 </script>
 
