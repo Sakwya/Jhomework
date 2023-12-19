@@ -4,11 +4,11 @@ import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 import org.apache.ibatis.annotations.Select;
 import top.sakwya.Jwork.entity.User;
 
-public interface userMapper extends BaseMapper<User> {
+public interface UserMapper extends BaseMapper<User> {
 
     @Select("select * from user where id = #{id}")
-    User getEmployeeByUserId(int id);
+    User getEmployeeByUserId(Long id);
 
     @Select("select * from user where username = #{username}")
-    User findByUsername(String username);
+    User selectByUsername(String username);
 }

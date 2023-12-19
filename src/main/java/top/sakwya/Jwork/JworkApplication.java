@@ -10,8 +10,8 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 @MapperScan("top.sakwya.Jwork.mapper")
 public class JworkApplication {
 
-	public static void main(String[] args) {
-		SpringApplication.run(JworkApplication.class, args);
-	}
+    public static void main(String[] args) {
+        SpringApplication.run(JworkApplication.class, args);
+    }
 
 }

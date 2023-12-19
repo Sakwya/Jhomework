@@ -4,7 +4,7 @@ import jakarta.annotation.Resource;
 import org.springframework.web.bind.annotation.*;
 import top.sakwya.Jwork.entity.User;
 import top.sakwya.Jwork.entity.JsonResult;
-import top.sakwya.Jwork.service.userService;
+import top.sakwya.Jwork.service.UserService;
 
 import java.sql.SQLException;
 import java.util.List;
@@ -12,7 +12,7 @@ import java.util.List;
 @RequestMapping("/api/user")
 public class UserController {
     @Resource
-    private userService userService;
+    private UserService userService;
 
     @GetMapping("/show")
     public JsonResult<List<User>> show() {
@@ -21,12 +21,12 @@ public class UserController {
     }
 
     @GetMapping("/get/{id}")
-    public JsonResult<User> getUser(@PathVariable int id) {
+    public JsonResult<User> getUser(@PathVariable Long id) {
         return new JsonResult<>(userService.queryByUser_Id(id));
     }
 
     @GetMapping("/get2/{id}")
-    public JsonResult<User> getUser2(@PathVariable int id) {
+    public JsonResult<User> getUser2(@PathVariable Long id) {
         return new JsonResult<>(userService.selectById(id));
     }
 
@@ -42,7 +42,7 @@ public class UserController {
     @PostMapping("/delete")
     public JsonResult<Integer> deleteEmployee(@RequestBody User user) {
         try {
-            return new JsonResult<>(userService.deleteUser(user.id));
+            return new JsonResult<>(userService.deleteUser(Math.toIntExact(user.id)));
         } catch (SQLException e) {
             return new JsonResult<>(e.getErrorCode(), e.getSQLState());
         }
