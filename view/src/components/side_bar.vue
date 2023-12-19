@@ -1,10 +1,10 @@
 <template>
 	<el-scrollbar>
 		<el-menu width="300px" :style="{borderRadius:'10px'}">
-			<el-menu-item index="1">
+			<el-menu-item index="1"><router-link to="/">
 				<span><el-icon>
 						<HomeFilled />
-					</el-icon>控制面板</span>
+					</el-icon>控制面板</span></router-link>
 			</el-menu-item>
 			<el-sub-menu index="2">
 				<template #title>

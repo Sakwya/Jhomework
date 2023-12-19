@@ -8,7 +8,7 @@
 				<side-bar></side-bar>
 			</el-aside>
 			<el-main>
-
+				<el-button type="info" :dark="false" plain><el-icon><InfoFilled />&nbsp;</el-icon>README.md</el-button>
 				<v-md-preview :text="markdownContent"></v-md-preview>
 			</el-main>
 		</el-container>

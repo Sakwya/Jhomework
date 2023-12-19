@@ -6,7 +6,7 @@ import {
 const routes = [{
 	path: '/',
 	name: 'index',
-	component: () => import('../components/index.vue'),
+	component: () => import('../components/panel.vue'),
 }, {
 	path: '/user',
 	name: 'user',
